@@ -1,0 +1,152 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red255\green255\blue255;\red57\green53\blue51;
+\red245\green245\blue245;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c100000\c100000\c100000;\cssrgb\c29020\c27059\c26275;
+\cssrgb\c96863\c96863\c96863;}
+\margl1440\margr1440\vieww10800\viewh18140\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Setup python and django\
+
+\b0 \
+1. Install python3\
+- don\'92t disturb existing python2 in the system\
+- install python3, then make an alias to python3 for \'91python\'92 and to pip3 for \'91pip\'92 or explicitly use python3 and pip3 for all commands.\
+\
+2. Install django\
+- use 
+\b pip3 
+\b0 to install django\
+- check the installations:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 sjc-mpq47:~ dthiagar$ python\
+Python 3.6.4 (v3.6.4:d48ecebad5, Dec 18 2017, 21:07:28) \
+\
+sjc-mpq47:~ dthiagar$ django-admin --help\
+\
+Type 'django-admin help <subcommand>' for help on a specific subcommand.
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+- if you get this error when using django-admin:\
+	Traceback (most recent call last):\
+  File "/usr/local/bin/django-admin", line 2, in <module>\
+    from django.core import management\
+ImportError: No module named django.core\
+\
+django-admin is probably referring to python2 and is unable to find django (as we installed it with python3 using pip3). To fix:\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 sjc-mpq47:bin dthiagar$ which django-admin\
+/usr/local/bin/django-admin\
+sjc-mpq47:bin dthiagar$ cd /usr/local/bin/\
+sjc-mpq47:bin dthiagar$ vi django-admin \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 change the first line to refer python3 like this:
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf4 \cb5 #!/usr/bin/env python3\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+3. Setup the virtual environment\
+\
+- Install virtualenv
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf4 pip3 install virtualenv
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+- Create a virtual environment and switch to it\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 $ virtualenv myvenv\
+$ source myvenv/bin/activate\
+(myvenv) sjc-mpq47:udemy-django2 dthiagar$ python\
+Python 3.6.4 (v3.6.4:d48ecebad5, Dec 18 2017, 21:07:28) \
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 Check python and django installations in the virtual environment. Proceed if everything looks fine, otherwise install django again in the virtual environment.\
+\
+
+\b Portfolio app\
+
+\b0 \
+1. Enter the virtual environment. Use django-admin to start a project\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 django-admin startproject portfolio\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 2. Rename the parent directory to portfolio-project to avoid confusion. Then import the project to the text editor.\
+\
+3. Initialize git and add .gitignore\
+\
+4. Install postgres. For Mac, postgres app is a easy way to use postgres. Install it from postgres website. Then create a database called portfolio. Connect postgres to the python project by updating settings.py file inside the project (the field DATABASES)\
+\
+5. Add apps for blog and job\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 python manage.py startapp blog\
+python manage.py startapp jobs\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 This adds directory structures for blog and jobs and configuration files\
+\
+6. Create a superuser for the django-admin interface to add new models\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 python manage.py createsuperuser
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 Run the server\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 python manage.py runserver
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 Go to the django admin web interface at {\field{\*\fldinst{HYPERLINK "http://localhost:8000/admin/"}}{\fldrslt http://localhost:8000/admin/}} and login with the credentials created\
+\
+7. To work with images, install Pillows using pip3. Configure settings.py to specify image directories (MEDIA_ROOT and MEDIA_URL) and add the URL patterns for the images by updating urls.py in the project (the field urlpatterns)\
+\
+8. Configure the apps blog and job\
+For each app:\
+i. In the models.py file that got generated, add the app class and the fields\
+ii. Add the model to the project by updating settings.py and adding the apps in INSTALLED_APPS field\
+iii. Create and make migrations:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 python manage.py makemigrations\
+python manage.py migrate\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 iv. Add the models to Admin interface \
+\
+9. Go back to the admin interface to verify that everything runs fine and there are options to add new objects for the new models added\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf4 \cb5 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+}
