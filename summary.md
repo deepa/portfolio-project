@@ -1,14 +1,14 @@
-##Setup python and django
+## Setup python and django
 
-####1. Install python3
+#### 1. Install python3
 - don’t disturb existing python2 in the system
 - install python3, then make an alias to python3 for ‘python’ and to pip3 for ‘pip’ or explicitly use python3 and pip3 for all commands
 
-####2. Install django
+#### 2. Install django
 Use pip3 to install django and check the installations:
 
 `	sjc-mpq47:~ dthiagar$ python
-	Python 3.6.4 (v3.6.4:d48ecebad5, Dec 18 2017, 21:07:28) 
+	Python 3.6.4 (v3.6.4:d48ecebad5, Dec 18 2017, 21:07:28)
 	sjc-mpq47:~ dthiagar$ django-admin --help
 	Type 'django-admin help <subcommand>' for help on a specific subcommand.`
 
@@ -30,7 +30,7 @@ change the first line to refer python3 like this:
 
 `	#!/usr/bin/env python3`
 
-####3. Setup the virtual environment
+#### 3. Setup the virtual environment
 
 - Install virtualenv
 pip3 install virtualenv
@@ -44,8 +44,8 @@ Python 3.6.4 (v3.6.4:d48ecebad5, Dec 18 2017, 21:07:28) `
 
 Check python and django installations in the virtual environment. Proceed if everything looks fine, otherwise install django again in the virtual environment.
 
-##Portfolio App
-###Get started with the Portfolio app
+## Portfolio App
+### Create the app and configure database
 
 * Enter the virtual environment. Use django-admin to start a project
 
@@ -80,25 +80,30 @@ For each app:
 `python manage.py makemigrations
 python manage.py migrate`
 
- * Add the models to Admin interface 
+ * Add the models to Admin interface
+
+ `from .models import Blog
+ admin.site.register(Blog)`
 
 * Go back to the admin interface to verify that everything runs fine and there are options to add new objects for the new models added
 
-###Add pages to the app
+### Add pages to the app
 * Add a new function in jobs/views.py to render the homepage
 
 `def home(request):
     return render(request, 'jobs/home.html')`
 
-* Add a new urlpattern to urls.py in the project to allow a new page called home to our web app, and 
+* Add a new urlpattern to urls.py in the project to allow a new page called home to our web app, and
 
 `import jobs.views
 path('', jobs.views.home, name='home')`
 
 * Add a new html page at jobs/templates/jobs/home.html
 
+* Add a new urls.py file to blogs app and reference it in the main urls.py file
 
+`path('blog/', include('blog.urls'))`
 
+* Create a new html page for blogs and render it in views.py for blogs app
 
-
-
+* To show individual blog posts, 
