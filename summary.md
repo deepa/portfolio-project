@@ -55,7 +55,7 @@ Check python and django installations in the virtual environment. Proceed if eve
 
 * Initialize git and add .gitignore
 
-* Install postgres. For Mac, postgres app is a easy way to use postgres. Install it from postgres website. Then create a database called portfolio. Connect postgres to the python project by updating settings.py file inside the project (the field DATABASES)
+* Install postgres. For Mac, postgres app is a easy way to use postgres. Install it from postgres website. Then create a database called portfoliodb. Connect postgres to the python project by updating settings.py file inside the project (the field DATABASES)
 
 * Add apps for blog and job. This adds directory structures for blog and jobs and configuration files
 
@@ -106,4 +106,21 @@ path('', jobs.views.home, name='home')`
 
 * Create a new html page for blogs and render it in views.py for blogs app
 
-* To show individual blog posts, 
+* Create a html page to show individual blogs and update the allblogs page to show each individual blog post
+
+* Add missing links, and the application is now complete
+
+## Deploying the application
+
+ 1. Create a new account in http://digitalocean.com
+
+ 2. Create a new droplet with Ubuntu. Create an rsa key for ssh and add it to the terminal and keystore:
+ ```
+ $ ssh-keygen -t rsa -b 2048 -E md5 -C "deepa-20180814" -f ~/.ssh/deepa-20180814
+ $ ssh-add -K deepa-20180814
+```
+3. Follow this guide for initial server setup:
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
+
+4. Follow this guide to set up sofware for the project
+https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04
