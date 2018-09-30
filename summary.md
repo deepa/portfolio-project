@@ -7,14 +7,14 @@
 #### 2. Install django
 Use pip3 to install django and check the installations:
 
-`	sjc-mpq47:~ dthiagar$ python
-	Python 3.6.4 (v3.6.4:d48ecebad5, Dec 18 2017, 21:07:28)
-	sjc-mpq47:~ dthiagar$ django-admin --help
-	Type 'django-admin help <subcommand>' for help on a specific subcommand.`
+`sjc-mpq47:~ dthiagar$ python
+Python 3.6.4 (v3.6.4:d48ecebad5, Dec 18 2017, 21:07:28)
+sjc-mpq47:~ dthiagar$ django-admin --help
+Type 'django-admin help <subcommand>' for help on a specific subcommand.`
 
 if you get this error when using django-admin:
 
-`	Traceback (most recent call last):
+`Traceback (most recent call last):
   File "/usr/local/bin/django-admin", line 2, in <module>
     from django.core import management
 ImportError: No module named django.core`
@@ -24,11 +24,11 @@ ImportError: No module named django.core`
 `sjc-mpq47:bin dthiagar$ which django-admin
 /usr/local/bin/django-admin
 sjc-mpq47:bin dthiagar$ cd /usr/local/bin/
-sjc-mpq47:bin dthiagar$ vi django-admin `
+sjc-mpq47:bin dthiagar$ vi django-admin`
 
 change the first line to refer python3 like this:
 
-`	#!/usr/bin/env python3`
+`#!/usr/bin/env python3`
 
 #### 3. Setup the virtual environment
 
