@@ -3,33 +3,28 @@
 {% block content %}
 <main role="main">
 
-  <section class="jumbotron text-center">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
     <div class="container">
-      <h1 class="jumbotron-heading">Hi, I'm Deepa</h1>
-      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc.
-        Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
-      <p>
-        <a href="mailto:deepa.name@gmail.com" class="btn btn-primary my-2">Email me</a>
-      </p>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url }}">
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
+      <h1 class="display-4">Hi, I'm Deepa!</h1>
+      <p>I'm a Java Engineer in quest of an opportunity to solve challenging software engineering problems with a
+        passion to use the right tools and best practices</p>
+      <p><a class="btn btn-primary btn-lg" href="mailto: deepa.name@gmail.com" role="button">Email me</a></p>
     </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+      {% for job in jobs.all %}
+      <div class="col-md-3">
+        <h2>{{ job.title }}</h2>
+        <p>{{ job.details }}</p>
+        <p><a class="btn btn-secondary" href="{{ job.link }}" target="_blank" role="button">See it in action &raquo;</a></p>
+      </div>
+      {% endfor %}
+    </div>
+    <hr />
+  </div> <!-- /container -->
 
 </main>
 {% endblock %}

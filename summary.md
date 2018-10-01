@@ -110,6 +110,17 @@ path('', jobs.views.home, name='home')`
 
 * Add missing links, and the application is now complete
 
+### Static files
+* Place the static files (the resume) in portfolio/static
+
+* Update settings.py to specify static url as this directory
+
+* Also update the static root and URL in settings.py to specify where static files can be found for the project
+
+* Run
+`python manage.py collectstatic` 
+to collect the static files into the static root
+
 ## Deploying the application
 
  1. Create a new account in http://digitalocean.com
