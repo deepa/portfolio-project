@@ -19,7 +19,9 @@
       <div class="col-md-3">
         <h2>{{ job.title }}</h2>
         <p>{{ job.details }}</p>
-        <p><a class="btn btn-secondary" href="{{ job.link }}" target="_blank" role="button">See it in action &raquo;</a></p>
+        {% if job.link %}
+          <p><a class="btn btn-secondary" href="{{ job.link }}" target="_blank" role="button">See it in action &raquo;</a></p>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
